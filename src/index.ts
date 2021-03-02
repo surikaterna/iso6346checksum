@@ -1,20 +1,53 @@
-const ASCII_0 = 48;
-const ASCII_9 = 57;
+export const asInt = (a: string): number => {
+  const values: Record<string, number> = {
 
-const ASCII_A = 65;
-const ASCII_Z = 90;
+    // digits
+    '0': 0,
+    '1': 1,
+    '2': 2,
+    '3': 3,
+    '4': 4,
+    '5': 5,
+    '6': 6,
+    '7': 7,
+    '8': 8,
+    '9': 9,
 
-export const asInt = (a: String): number => {
-  let result = a.toUpperCase().charCodeAt(0);
-  // Number 0-9)
-  if (result >= ASCII_0 && result <= ASCII_9) {
-    return result - ASCII_0;
-  } else if (result === ASCII_A) {
-    return 10;
-  } else if (result > ASCII_A && result <= ASCII_Z) {
-    return result - ASCII_A + 10 + Math.floor((result - ASCII_A) / 11) + 1;
-  } else {
+    // letters
+    'A': 10,
+    'B': 12,
+    'C': 13,
+    'D': 14,
+    'E': 15,
+    'F': 16,
+    'G': 17,
+    'H': 18,
+    'I': 19,
+    'J': 20,
+    'K': 21,
+    'L': 23,
+    'M': 24,
+    'N': 25,
+    'O': 26,
+    'P': 27,
+    'Q': 28,
+    'R': 29,
+    'S': 30,
+    'T': 31,
+    'U': 32,
+    'V': 34,
+    'W': 35,
+    'X': 36,
+    'Y': 37,
+    'Z': 38
+
+  }
+  const result: number | undefined = values[a];
+  if (result === undefined) {
     throw new Error('Illegal argument, should be between 0-9, A-Z');
+  }
+  else {
+    return result;
   }
 }
 
